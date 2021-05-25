@@ -6,10 +6,10 @@
     <% flash[:notice] %>
     <p id="notice"></p>
     <div class="row">
-    <div class="col-md-3">
+      <div class="col-md-3">
       <h2>User info</h2>
       <%= render 'users/list', user: @user %>
-    </div>
+      </div>
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
       <table class="table">
@@ -24,9 +24,15 @@
             <tr></tr>
              <% @users.each do |user| %>
              <tr>
-               <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
-               <td><%= user.name %></td>
-               <td><%= link_to "Show" , user_path(user.id) %></td>
+               <td>
+                 <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
+               </td>
+               <td>
+                 <%= user.name %>
+               </td>
+               <td>
+                 <%= link_to "Show" , user_path(user.id) %>
+               </td>
              </tr>
              <% end %>
           </tbody>

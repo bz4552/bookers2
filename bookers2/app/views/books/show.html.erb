@@ -13,24 +13,31 @@
           <h2>Book detail</h2>
           <table class="table">
             <% if @book.errors.any? %>
-  <%= @book.errors.count %>error prohibited this obj from being saved:
-  <% @book.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
-            <tbody>
-              <tr>
-                <td>
-                  <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %>
-                  <br>
-                  <%= link_to @user.name, user_path(@user.id) %></td>
-                <td><%= link_to @book.title, book_path(@book.id) %></td>
-                <td><%= @book.body %></td>
-                <% if @book.user == current_user %>
-                <td><%= link_to "Edit", edit_book_path(@book.id) %></td>
-                <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure" %></td>
-                <% end %>
-              </tr>
+            <%= @book.errors.count %>error prohibited this obj from being saved:
+            <% @book.errors.full_messages.each do |message| %>
+            <%= message %>
+            <% end %>
+            <% end %>
+        <tbody>
+          <tr>
+            <td>
+              <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %>
+                <br>
+                <%= link_to @user.name, user_path(@user.id) %>
+            </td>
+            <td>
+              <%= link_to @book.title, book_path(@book.id) %>
+            </td>
+            <td><%= @book.body %>
+            </td>
+              <% if @book.user == current_user %>
+            <td>
+              <%= link_to "Edit", edit_book_path(@book.id) %>
+            </td>
+            <td>
+              <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure" %></td>
+              <% end %>
+            </tr>
             </tbody>
           </table>
         </div>
